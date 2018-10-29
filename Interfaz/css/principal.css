@@ -1,0 +1,12 @@
+/* Navbar */
+.navbar-inverse {
+    background-color: #1b862d;
+    border-color: transparent;
+  }
+
+ #navbar li.active a{
+    background-color: #2c3e50;
+  
+
+
+ }
