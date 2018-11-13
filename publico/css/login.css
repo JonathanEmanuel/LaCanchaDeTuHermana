@@ -1,0 +1,29 @@
+.container {
+    margin-top: 5%;
+}
+
+#frmLogin {
+    padding: 10px;
+    border: 1px solid #dce4ec;
+    box-shadow: -4px 5px 16px 0px black;
+    height: 400px;
+
+}
+
+#frmLogin input {
+    margin-top: 10px;
+
+}
+
+#frmLogin button {
+    margin-top: 10px;
+}
+
+ div #msgCamposInvalidos, #msgCompleteCampos{
+    margin-top: 10px;
+    display: none;
+}
+
+.error{
+    border: 2px solid #e74c3c;
+}

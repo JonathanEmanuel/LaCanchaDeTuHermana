@@ -1,0 +1,14 @@
+1) Login
+2) ABM Torneos.
+3) ABM Equipos.
+4) ABM Administradores (clientes).
+
+
+5) carga de resultados partidos.
+6) visualizacion de sancionados de partidos.
+7) visualizacion de goladores de partidos.
+8) ABM de Sedes.
+
+
+9) ABM de fechas.
+
