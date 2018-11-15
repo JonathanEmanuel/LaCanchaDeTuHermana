@@ -68,7 +68,7 @@
 			$_SESSION['usuariioId'] = $usuario->usuarioId;
 			$_SESSION['usuario'] = $usuario->email;
 			$_SESSION['perfilId'] = $usuario->PerfilUsuarioId;
-			$_SESSION['key'] = "LaDeTuHermana";// md5("oraguasoft2018");
+			$_SESSION['key'] = "LaDeTuHermana";// md5("");
 		
 /* 		$_SESSION['usuariioId'] = $usuario["usuarioId"];
 		$_SESSION['usuario'] = $usuario["email"];
