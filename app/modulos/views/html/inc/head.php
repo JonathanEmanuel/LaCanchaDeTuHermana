@@ -9,6 +9,8 @@
 
   <link href="../publico/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../publico/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../publico/lib/jquery-upload-file/css/uploadfile.css">
+  <link rel="stylesheet" href="../publico/lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="../publico/css/principal.css">
 
 </head>

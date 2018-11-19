@@ -29,10 +29,12 @@ class indexController {
 		// Segun el perfilId mostrar panel o pagina para el visitante
 		switch ($_SESSION['perfilId']) {
 			case '1':	// Administrador
+				$nombrePanel = "Principal";
 				require_once(VISTAS . "html/inc/head.php");
 				require_once(VISTAS . "html/inc/nav.php");
 				require_once(VISTAS . "html/inc/header.php");
-				require_once(VISTAS . "html/inc/breadcrumb.php");
+            // Se elimino "breadcrumb" porque se cargara en el Header 
+
 				require_once(VISTAS . "html/inc/modalEquipo.php");
 
 
