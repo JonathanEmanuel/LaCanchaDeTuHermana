@@ -2,8 +2,11 @@
     require_once('./core/dbAbstractModel.php');
 
     class Torneos extends dbAbstractModel {
-        public $id;
-        public $nombre;
+        public $TorneoId;
+        public $Nombre;
+        public $Inicio;
+        public $Fin;
+        public $FotoURL;
         public $torneos = array();
 
         // Guarda un Torne
@@ -26,16 +29,41 @@
            $this->consultaResultados();
            return $this->rows;
 
-            /*
-            $this->torneos = array(
-                array('id' => 1, 'nombre' => 'Torneo1'  ),
-                array('id' => 2, 'nombre' => 'Torneo 02'  ),
-                array('id' => 3, 'nombre' => 'Torneo 3'  ),
+        }
 
-            );
+        // Carga Datos del Torneo
+        public function cargar($torneoId){
+            $this->query = "
+                SELECT TorneoId, Nombre, Inicio, Fin, FotoURL
+                FROM torneos 
+                WHERE TorneoId = '$torneoId' AND  Borrado IS NULL
+            ";
+            $this->consultaResultados();
 
-            return $this->torneos;
-            */
+            
+            if (count($this->rows) == 1) { // si existes el email
+                //print_r($this->rows);
+                foreach ($this->rows[0] as $propiedad => $valor) {
+                    $this->$propiedad = $valor;
+
+                }
+                $this->msj = 'Existe';
+
+            } else {
+                $this->msj = 'No existe';
+                //echo "FALSE";
+            }
+        }
+
+        // Baja Logica a torneo
+        public function baja($torneoId){
+            $this->query = "
+                UPDATE torneos
+                SET Borrado = NOW()
+                WHERE TorneoId = '$torneoId'   
+            ";
+            $this->consultaSimple();
+
         }
         
     }

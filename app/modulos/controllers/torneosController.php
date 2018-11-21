@@ -62,14 +62,18 @@
          
         }
 
-        public function listar($parametros = 0){
-            echo(" lista de torneos");
+        public function cargar($parametros = 0){
+            $torneo =  new Torneos;
 
+            $torneo->cargar($parametros[0]);
+            echo(json_encode($torneo));
 
         }
 
-        public function eliminar($parametro){
-
+        public function baja($parametros=''){
+            $torneo =  new Torneos;
+            $torneo->baja($parametros[0]);
+            echo ( $parametros[0]);
         }
     }
     
