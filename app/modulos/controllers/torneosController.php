@@ -42,13 +42,21 @@
                 $inicio = $_POST["inicio"]; // date("y-m-d", strtotime( $_POST["inicio"]));
                 $fin = $_POST["fin"];
                 $logoUrl = $_POST["logoUrl"];
-                echo($inicio);
-                $torneo->guardar($nombre, $inicio, $fin, $logoUrl);
                 
-                echo('Respuesta: ');
-                echo($_POST["nombre"]);
+                $torneo->guardar($nombre, $inicio, $fin, $logoUrl);
+         
+                
+
+                echo( json_encode(
+                    array('Nombre' => $nombre,
+                          'Inicio' => $inicio,
+                          'Fin' => $fin,
+                          'LogoUrl' => $logoUrl   
+                        )
+                    ));
+                
             } else {
-                echo('sin datos');
+                // Retorna JSON con mensaje de error.
             }
          
          

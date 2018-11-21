@@ -18,6 +18,15 @@
         // Consulta en DB Torneos
         public function listar()
         {
+            $this->query = "
+                    SELECT TorneoId, Nombre, Inicio, Fin, FotoURL
+                    FROM torneos 
+                    WHERE Borrado IS NULL
+                ";
+           $this->consultaResultados();
+           return $this->rows;
+
+            /*
             $this->torneos = array(
                 array('id' => 1, 'nombre' => 'Torneo1'  ),
                 array('id' => 2, 'nombre' => 'Torneo 02'  ),
@@ -26,7 +35,7 @@
             );
 
             return $this->torneos;
-    
+            */
         }
         
     }

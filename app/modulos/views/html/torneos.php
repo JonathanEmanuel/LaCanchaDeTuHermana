@@ -1,10 +1,15 @@
 <div class="container">
         <h4>Torneos</h4>
+
+        
         <div class=" col-lg-12">
             <table id="tablaTorneos" class="table table-bordered table-hover">
                 <thead>
-                    <th>#</th>
                     <th>Nombre</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Imagen</th>
+
                 </thead>
                 <tbody>
                     <?php
@@ -12,9 +17,14 @@
                         // EN la consulta en la db
                         foreach ($listaTorneo as $key => $torneo) {
                                 echo(' <tr>');
-    
-                                echo('<td>'.$torneo['id']. '</td>');
-                                echo('<td>'.$torneo['nombre'] . '</td>');
+
+                                //echo('<td>'.$torneo['TorneoId']. '</td>');
+                                echo('<td>'.$torneo['Nombre'] . '</td>');
+                                echo('<td>'.$torneo['Inicio'] . '</td>');
+                                echo('<td>'.$torneo['Fin'] . '</td>');
+                                echo('<td>'.$torneo['FotoURL'] . '</td>');
+
+
     
                                 echo(' </tr>');
                       

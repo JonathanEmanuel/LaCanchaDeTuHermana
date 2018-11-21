@@ -47,7 +47,12 @@ $(document).ready(function(){
                 // contentType: "application/json",
                 data: parametros,
                 success: function(datos) {
-                console.info('respuesta', datos);
+                    console.info('respuesta', datos);
+                    insertarRow($('#tablaTorneos'), parametros, 0); // En utilidades.js
+                    vaciarFormulario($('#frmTorneo'));  // En utilidades.js
+
+                    $('#modalTorneo').modal('hide');
+
                 },
                 error: function(obj, error, objErorr){
                     console.error('Error: ', error);

@@ -67,7 +67,16 @@ function eliminarNoValidoFocus(obj) {
 }
 
 // Agrega Row a una tabla
-function insertarRow(tabla, row){
+function insertarRow(tabla, row, codigo){
     // Crea Row HTML
+    var tr = $('<tr>', {'data-codigo':codigo});
+
+    for(const propiedad in row ){
+        $(tr).append(
+            $('<td>', {text: row[propiedad]})
+        );
+    }
+    // Agrega Row creado a la tabla
+    $(tabla).find('tbody').append(tr);
 
 }
