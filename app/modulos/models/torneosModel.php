@@ -6,6 +6,15 @@
         public $nombre;
         public $torneos = array();
 
+        // Guarda un Torne
+        public function guardar($nombre, $inicio, $fin, $fotoURL){
+            $this->query = "
+                INSERT INTO torneos(Nombre, Inicio, Fin, FotoURL)
+                VALUES ('$nombre', '$inicio', '$fin', '$fotoURL');
+            ";
+            $this->consultaSimple();
+        }
+
         // Consulta en DB Torneos
         public function listar()
         {

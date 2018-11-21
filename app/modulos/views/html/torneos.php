@@ -1,7 +1,7 @@
 <div class="container">
         <h4>Torneos</h4>
         <div class=" col-lg-12">
-            <table class="table table-bordered table-hover">
+            <table id="tablaTorneos" class="table table-bordered table-hover">
                 <thead>
                     <th>#</th>
                     <th>Nombre</th>

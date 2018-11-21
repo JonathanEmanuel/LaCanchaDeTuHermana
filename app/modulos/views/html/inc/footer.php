@@ -9,7 +9,9 @@
     <script src="../publico/lib/moment.min.js"></script>
     <script src="../publico/lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="../publico/lib/bootstrap-datepicker/js/bootstrap-datepicker.es.min.js"></script>
+    <script src="../publico/js/utilidades.js"></script>    
     <script src="../publico/js/principal.js"></script>
+
 </body>
 
 </html>

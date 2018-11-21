@@ -32,6 +32,27 @@
 
         }
 
+        // Ruta guardar Torneo, espera recibir un json con las variables
+        public function guardar($parametro= ''){
+            //$post = json_decode(file_get_contents('php://input'), true);
+            if( isset( $_POST["nombre"]) && isset($_POST['inicio']) && isset($_POST['fin']) && isset($_POST['logoUrl'])  ){
+                $torneo =  new Torneos;
+
+                $nombre = $_POST["nombre"];
+                $inicio = $_POST["inicio"]; // date("y-m-d", strtotime( $_POST["inicio"]));
+                $fin = $_POST["fin"];
+                $logoUrl = $_POST["logoUrl"];
+                echo($inicio);
+                $torneo->guardar($nombre, $inicio, $fin, $logoUrl);
+                
+                echo('Respuesta: ');
+                echo($_POST["nombre"]);
+            } else {
+                echo('sin datos');
+            }
+         
+         
+        }
 
         public function listar($parametros = 0){
             echo(" lista de torneos");

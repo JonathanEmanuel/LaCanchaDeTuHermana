@@ -30,3 +30,8 @@
    height: 40px;
    color: #111111;
  }
+
+ /* FORMULARIO */
+ .noValido{
+  border: 2px solid #e74c3c;
+}

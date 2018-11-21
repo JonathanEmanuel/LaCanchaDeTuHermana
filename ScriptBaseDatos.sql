@@ -1,6 +1,8 @@
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `Usuarios`;
 DROP TABLE IF EXISTS `PerfilUsuario`;
+DROP TABLE IF EXISTS `Torneos`;
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 
@@ -24,7 +26,26 @@ CREATE TABLE `PerfilUsuario` (
     PRIMARY KEY (`PerfilUsuarioId`)
 );
 
+
+CREATE TABLE `Torneos` (
+    `TorneoId` INTEGER NOT NULL AUTO_INCREMENT,
+    `Nombre` VARCHAR(64) NOT NULL,
+    `Inicio` DATE NOT NULL,
+    `Fin` DATE NOT NULL,
+    `FotoURL` VARCHAR(256) NOT NULL,
+    `Borrado` DATETIME,
+    PRIMARY KEY (`TorneoId`)
+);
+
+CREATE TABLE `UsuariosTorneos` (
+    `UsuarioId` INTEGER NOT NULL,
+    `TorneoId` INTEGER NOT NULL,
+    PRIMARY KEY (`UsuarioId`, `TorneoId`)
+);
+
 ALTER TABLE `Usuarios` ADD FOREIGN KEY (`PerfilUsuarioId`) REFERENCES `PerfilUsuario`(`PerfilUsuarioId`);
+
+
 
 
 INSERT INTO `perfilusuario` (`PerfilUsuarioId`, `Descripcion`, `Borrado`) 
