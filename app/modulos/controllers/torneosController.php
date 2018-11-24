@@ -8,7 +8,11 @@
         // Validar Sesion y roles
         function __construct(){
 		    session_start();
-            
+            /* Si no hay una sesión creada, redireccionar al index. */
+            if(empty($_SESSION['key'])) { // Seria para poner un key generado en el inicio de sesion, HASH (DESARROLLAR!)
+                header('Location: ../cuenta/salir');
+            } 
+
         }
 
         // Ruta default del controlado, mostrara la pagina de torneos (Grilla de tornes, btn Crear Torneo, etc...)

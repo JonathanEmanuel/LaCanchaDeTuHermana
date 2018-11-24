@@ -1,5 +1,5 @@
 1) Login  -Mitad
-2) ABM Torneos. --
+2) ABM Torneos. -- Ok
 3) ABM Equipos.
 4) ABM Administradores (clientes).
 

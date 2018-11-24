@@ -11,7 +11,11 @@
                         <h1><i class="fa fa-' .'trophy' .'" aria-hidden="true"></i> '. $nombrePanel .' <small>'. $_SESSION['usuario'].'</small></h1>
                   ');
                   break;
-                
+                case 'Equipos':
+                  echo('
+                        <h1><i class="fa fa-' .'futbol-o' .'" aria-hidden="true"></i> '. $nombrePanel .' <small>'. $_SESSION['usuario'].'</small></h1>
+                  ');
+                  break;
                 default:
                   echo('
                     <h1><i class="fa fa-home" aria-hidden="true"></i> Principal <small>Administre aqui su pagina</small></h1>
@@ -52,8 +56,8 @@
       </div>
     </div>
   </header>
-
-  <section id="breadcrumb">
+  <hr/>
+  <section id="breadcrumb" style="display:none;">
     <div class="container">
       <ol class="breadcrumb">
         <li class="active">Principal</li>
