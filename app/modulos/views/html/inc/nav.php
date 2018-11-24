@@ -14,6 +14,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li <?php  if($nombrePanel == "Principal")  echo('class="active"'); ?>><a href="index">Principal</a></li>
+          <li <?php  if($nombrePanel == "Clientes")  echo('class="active"'); ?> ><a href="clientes">Clientes</a></li>
           <li <?php  if($nombrePanel == "Torneos")  echo('class="active"'); ?> ><a href="torneos">Torneos</a></li>
           <li <?php  if($nombrePanel == "Equipos")  echo('class="active"'); ?>><a href="equipos">Equipos</a></li>
           <li <?php  if($nombrePanel == "Jugadores")  echo('class="active"'); ?>><a href="jugadores">Jugadores</a></li>
