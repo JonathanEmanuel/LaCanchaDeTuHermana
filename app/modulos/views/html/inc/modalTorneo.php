@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times"></i></span></button>
                 <h4 class="modal-title"><i class="fa fa-trophy fa-fw fa-lg" aria-hidden="true"></i>Toreo</h4>
             </div>
-        <form id="frmTorneo">
+        <form id="frmTorneo" data-codigo="0">
 
             <div class="modal-body">
                     <div class="col-lg-10 col-md-9 col-sm-8">

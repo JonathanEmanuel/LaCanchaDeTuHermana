@@ -16,6 +16,44 @@
                 VALUES ('$nombre', '$inicio', '$fin', '$fotoURL');
             ";
             $this->consultaSimple();
+
+            $this->query = "
+                SELECT MAX(TorneoId) AS TorneoId
+                FROM torneos
+            ";
+
+            $this->consultaResultados();
+
+            // echo( 'ID: ' . $this->rows[0]['TorneoId']);
+
+
+            return $this->rows[0];
+
+        }
+
+        public function actualizar($torneoId, $nombre, $inicio, $fin, $fotoURL){
+            $this->query = "
+                UPDATE torneos
+                SET nombre = '$nombre',
+                    inicio = '$inicio',
+                    fin = '$fin',
+                    FotoURL = '$fotoURL'
+                WHERE TorneoId = '$torneoId';
+            ";
+            $this->consultaSimple();
+
+            $this->query = "
+            SELECT MAX(TorneoId) AS TorneoId
+            FROM torneos
+            ";
+
+            $this->consultaResultados();
+
+            // echo( 'ID: ' . $this->rows[0]['TorneoId']);
+
+
+            return $this->rows[0];
+
         }
 
         // Consulta en DB Torneos
@@ -36,7 +74,9 @@
             $this->query = "
                 SELECT TorneoId, Nombre, Inicio, Fin, FotoURL
                 FROM torneos 
-                WHERE TorneoId = '$torneoId' AND  Borrado IS NULL
+                WHERE TorneoId = '$torneoId' AND  Borrado IS NULL;
+
+                
             ";
             $this->consultaResultados();
 

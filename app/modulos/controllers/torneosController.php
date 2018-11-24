@@ -35,25 +35,36 @@
         // Ruta guardar Torneo, espera recibir un json con las variables
         public function guardar($parametro= ''){
             //$post = json_decode(file_get_contents('php://input'), true);
-            if( isset( $_POST["nombre"]) && isset($_POST['inicio']) && isset($_POST['fin']) && isset($_POST['logoUrl'])  ){
+            if(  isset($_POST["torneoId"]) && isset($_POST["nombre"]) && isset($_POST['inicio']) && isset($_POST['fin']) && isset($_POST['logoUrl'])  ){
                 $torneo =  new Torneos;
 
+                $torneoId = $_POST["torneoId"];
                 $nombre = $_POST["nombre"];
                 $inicio = $_POST["inicio"]; // date("y-m-d", strtotime( $_POST["inicio"]));
                 $fin = $_POST["fin"];
                 $logoUrl = $_POST["logoUrl"];
                 
-                $torneo->guardar($nombre, $inicio, $fin, $logoUrl);
+                if( $torneoId == 0){
+                    $torneoId = $torneo->guardar($nombre, $inicio, $fin, $logoUrl)['TorneoId'];
          
                 
 
-                echo( json_encode(
-                    array('Nombre' => $nombre,
-                          'Inicio' => $inicio,
-                          'Fin' => $fin,
-                          'LogoUrl' => $logoUrl   
-                        )
-                    ));
+                    echo( json_encode(
+                        array('TorneoId' => $torneoId,
+                              'Nombre' => $nombre,
+                              'Inicio' => $inicio,
+                              'Fin' => $fin,
+                              'LogoUrl' => $logoUrl   
+                            )
+                        ));
+                } else {
+                    //echo("Actualizar");
+                    $torneoId = $torneo->actualizar($torneoId, $nombre, $inicio, $fin, $logoUrl)['TorneoId'];
+                    echo(
+                        json_encode( array('TorneoId' => $torneoId ))
+                    );
+                }
+ 
                 
             } else {
                 // Retorna JSON con mensaje de error.

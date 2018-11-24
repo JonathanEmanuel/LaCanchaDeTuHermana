@@ -2,7 +2,9 @@ $(document).ready(function(){
 
     // Abre modal Crear Torneo
     $('#btn-nuevo-Torneos').click(function () {
-        console.info('open modal');
+        //var formularioTorneo = $('#frmTorneo');
+        // Asinga codio cero, que sera usado para enviar al servidor y sabra si es un Crear o Actualizar
+        $('#frmTorneo').attr('data-codigo','0');
         $('#modalTorneo').modal('show');
     });
 
@@ -16,7 +18,7 @@ $(document).ready(function(){
     // Configura UploadFile
     $("#torneoLogoSubir").uploadFile({
         url:"../upload.php",
-        fileName:"myfile",
+        fileName:"logoTorneo",
         multiple:false,
         acceptFiles:"image/*",
         dragDropStr: "<span><b>Arrastre aqui</b></span>",
@@ -27,11 +29,13 @@ $(document).ready(function(){
 
     })
 
-    // GUARDAR TORNEO: Valida formulario con campos completos, Envia al Server y Agrega en Tabla
+    // GUARDAR TORNEO: Valida formulario con campos completos, Envia al Server y Agrega en Tabla (Si torneoId == 0)
+    // En el caso que sea actualizar torneo (torneoId != 0) recarga la pagina luego de enviar al Servidor
     $('#btnTorneoGuardar').click(function(){
         var formularioTorneo = $('#frmTorneo');
         if(validarFormularioGeneral(formularioTorneo)) {
             var parametros = {
+                torneoId: formularioTorneo.attr('data-codigo'),
                 nombre: formularioTorneo.find('.nombre').val(),
                 inicio: formularioTorneo.find('.inicio').val(),
                 fin: formularioTorneo.find('.fin').val(),
@@ -48,21 +52,35 @@ $(document).ready(function(){
                 data: parametros,
                 success: function(datos) {
                     console.info('respuesta', datos);
-                    insertarRow($('#tablaTorneos'), parametros, 0); // En utilidades.js
-                    // Insrta Botonos
-                    $('#tablaTorneos').find('tbody').find('tr:last').append(
-                        $('<td>').append( $('<button>', {'class': 'btn btn-primary btn-sm', 'type': 'button', 'onclick':'abrirTorneo(this);'}  )
-                            .append ( $('<i>', {'class':'fa fa-pencil fa-fw', 'aria-hidden': 'true'}))
-                        
-                        )
-                    );
-                    $('#tablaTorneos').find('tbody').find('tr:last').append(
-                        $('<td>').append( $('<button>', {'class': 'btn btn-warning btn-sm', 'type': 'button', 'onclick':'bajaTorneo(this);'}  )
-                            .append ( $('<i>', {'class':'fa fa-times fa-fw', 'aria-hidden': 'true'}))
-                        
-                        )
-                    );
-                    vaciarFormulario($('#frmTorneo'));  // En utilidades.js
+                    var row = {
+                        Nombre: datos.Nombre,
+                        Inicio: datos.Inicio,
+                        Fin: datos.Fin,
+                        LogoUrl: datos.LogoUrl,
+                    }
+                    var id = datos.TorneoId;
+
+                    if( parametros.torneoId == 0) {
+                        insertarRow($('#tablaTorneos'), row, id); // En utilidades.js
+                        // Insrta Botonos
+                        $('#tablaTorneos').find('tbody').find('tr:last').append(
+                            $('<td>').append( $('<button>', {'class': 'btn btn-primary btn-sm', 'type': 'button', 'onclick':'abrirTorneo(this);'}  )
+                                .append ( $('<i>', {'class':'fa fa-pencil fa-fw', 'aria-hidden': 'true'}))
+                            
+                            )
+                        );
+                        $('#tablaTorneos').find('tbody').find('tr:last').append(
+                            $('<td>').append( $('<button>', {'class': 'btn btn-warning btn-sm', 'type': 'button', 'onclick':'bajaTorneo(this);'}  )
+                                .append ( $('<i>', {'class':'fa fa-times fa-fw', 'aria-hidden': 'true'}))
+                            
+                            )
+                        );
+                        vaciarFormulario($('#frmTorneo'));  // En utilidades.js
+                    } else {
+                        window.location.href="torneos";
+                    }
+
+
 
                     $('#modalTorneo').modal('hide');
 
@@ -105,6 +123,7 @@ function abrirTorneo(btn){
         success: function(datos) {
             console.info('respuesta', datos);
             // Carga Datos del Torneo en el modalTorneo
+            formularioTorneo.attr('data-codigo', datos.TorneoId);
             formularioTorneo.find('.nombre').val(datos.Nombre);
             formularioTorneo.find('.inicio').val(datos.Inicio);
             formularioTorneo.find('.fin').val(datos.Fin),
