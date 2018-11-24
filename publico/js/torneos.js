@@ -101,6 +101,21 @@ $(document).ready(function(){
         vaciarFormulario($('#frmTorneo'));  // En utilidades.js
         $('#modalTorneo').modal('hide');
     });
+
+
+    // Filtrar Torneos
+    $('#frm-TorneosBuscar').submit(function(evento){
+        evento.preventDefault();
+        console.info('Biscar');
+        var txtBuscar = $('#txt-buscar').val().trim();
+
+        console.log(txtBuscar, txtBuscar.length);
+
+        if(txtBuscar != ''){
+            cargarTorneos(txtBuscar);
+        }
+
+    });
 })
 
 // Abre Modal Torneo
@@ -168,4 +183,40 @@ function bajaTorneo(btn){
 
 
 
+}
+
+// Carga Tabla torneos filtrada
+function cargarTorneos(filtro){
+
+    var parametros = {palabra: filtro};
+    $.ajax({
+        url: 'torneos/filtrar',
+        method: 'POST',
+        data: parametros,
+        dataType: 'json',
+        success: function(datos) {
+            console.info('respuesta', datos);
+            $('#tablaTorneos').find('tbody').empty();
+            datos.forEach(row => {
+                datos = {Nombre: row.Nombre, Inicio: row.Inicio, Fin: row.Fin, FotoURL: row.FotoURL}
+                insertarRow($('#tablaTorneos'), datos, row.TorneoId); // En utilidades.js
+                // Insrta Botonos
+                $('#tablaTorneos').find('tbody').find('tr:last').append(
+                    $('<td>').append( $('<button>', {'class': 'btn btn-primary btn-sm', 'type': 'button', 'onclick':'abrirTorneo(this);'}  )
+                        .append ( $('<i>', {'class':'fa fa-pencil fa-fw', 'aria-hidden': 'true'}))
+                    
+                    )
+                );
+                $('#tablaTorneos').find('tbody').find('tr:last').append(
+                    $('<td>').append( $('<button>', {'class': 'btn btn-warning btn-sm', 'type': 'button', 'onclick':'bajaTorneo(this);'}  )
+                        .append ( $('<i>', {'class':'fa fa-times fa-fw', 'aria-hidden': 'true'}))
+                    
+                    )
+                );
+            });
+        },
+        error: function(obj, error, objErorr){
+            console.error('Error: ', error);
+        }
+      });
 }

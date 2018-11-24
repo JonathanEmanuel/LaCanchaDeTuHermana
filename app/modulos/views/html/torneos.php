@@ -1,7 +1,12 @@
 <div class="container">
-        <h4>Torneos</h4>
-
-        
+            <form id="frm-TorneosBuscar">
+                <div class="col-md-6">
+                    <input id="txt-buscar" class="form-control" type="text" placeholder="Buscar...">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </form>      
         <div class=" col-lg-12">
             <table id="tablaTorneos" class="table table-bordered table-hover">
                 <thead>

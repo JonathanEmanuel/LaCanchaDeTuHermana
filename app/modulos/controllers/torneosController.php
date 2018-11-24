@@ -32,6 +32,17 @@
 
         }
 
+
+        // Retorna JSON con los torneso aplicando Filto
+        public function filtrar($parametros = '')
+        {
+            if(isset($_POST['palabra'])){
+                $torneos = new Torneos;
+                $lista = $torneos->buscar($_POST['palabra']);
+                echo (json_encode($lista));
+            }
+        }
+
         // Ruta guardar Torneo, espera recibir un json con las variables
         public function guardar($parametro= ''){
             //$post = json_decode(file_get_contents('php://input'), true);
@@ -73,6 +84,7 @@
          
         }
 
+        // Retorna JSON con detalles del Torneo por Id
         public function cargar($parametros = 0){
             $torneo =  new Torneos;
 
@@ -81,6 +93,7 @@
 
         }
 
+        // Baja logica a torneo por Id
         public function baja($parametros=''){
             $torneo =  new Torneos;
             $torneo->baja($parametros[0]);

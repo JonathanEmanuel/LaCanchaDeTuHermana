@@ -69,6 +69,18 @@
 
         }
 
+        // Consulta Tornes aplicando filtro en nombre
+        public function buscar($palabra){
+            $this->query = "
+                    SELECT TorneoId, Nombre, Inicio, Fin, FotoURL
+                    FROM torneos 
+                    WHERE Borrado IS NULL AND Nombre LIKE '%$palabra%'
+                ";
+            $this->consultaResultados();
+
+            return $this->rows;
+        }
+
         // Carga Datos del Torneo
         public function cargar($torneoId){
             $this->query = "
