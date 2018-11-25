@@ -1,5 +1,5 @@
 
-<div class="modal fade modal modal-info" id="modalNuevoEquipo" tabindex="-1" role="dialog" aria-labelledby="modalNuevoEquipo" aria-hidden="true" data-backdrop="static" style="display: none;">
+<div class="modal fade modal modal-info" id="modalEquipo" tabindex="-1" role="dialog" aria-labelledby="modalNuevoEquipo" aria-hidden="true" data-backdrop="static" style="display: none;">
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -10,8 +10,13 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
                   <label>Toreo</label>
-                  <select class="form-control">
-                    <option value="0">Seleccionar</option>
+                  <select class="form-control text-uppercase">
+                    <option value="0">Selecionar Torneo</option>
+                      <?php
+                          foreach ($listaTorneo as $key => $torneo) {
+                              echo('<option value="'.$torneo['TorneoId'].'"> '.$torneo['Nombre'].'</option>');
+                          }
+                      ?>
                   </select>
 
                 </div>
