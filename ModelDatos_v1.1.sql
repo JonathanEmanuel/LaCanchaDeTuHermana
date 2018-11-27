@@ -176,7 +176,11 @@ INSERT INTO `Roles` (`Descripcion`)
     VALUES ('ADMINISTRADOR'), ('CLIENTE');
 
 INSERT INTO `Usuarios` (`Apellido`, `Nombres`, `NombreUsuario`, `Password`, `Email`) 
-    VALUES ('Cruz', 'jonathan', 'admin', 'admin123', 'admin@mail.com.ar');
+    VALUES ('Cruz', 'Jonathan', 'admin', 'admin123', 'admin@mail.com.ar');
 
 INSERT INTO `Usuarios_Roles` (`UsuarioId`, `RolId`) 
-    VALUES (1, 1);
+    VALUES (
+        (SELECT `UsuarioId` FROM `Usuarios` WHERE `Apellido` = 'Cruz' AND `Nombres` = 'Jonathan')
+        , 
+        (SELECT `RolId` FROM `Roles` WHERE `Descripcion` = 'ADMINISTRADOR')
+        );
