@@ -14,11 +14,11 @@ function vaciarFormulario(formulario) {
 }
 
 // Valida que este completos: inputs, textarea y select que no sea valor = 0
-function validarFormularioGeneral(fomulario) {
+function validarFormularioGeneral(formulario) {
 
     var correcto = true;
 
-    fomulario.each(function () {
+    formulario.each(function () {
         // Recorre cada input y verifica que no este vacio
         $(this).find('input').each(function () {
             if ($(this).val() == "") {

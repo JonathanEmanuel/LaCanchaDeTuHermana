@@ -17,11 +17,13 @@ $(document).ready(function(){
 
     // Configura UploadFile
     $("#torneoLogoSubir").uploadFile({
-        url:"../upload.php",
-        fileName:"logoTorneo",
+        url:"upload",
+        fileName:"myfile",
         multiple:false,
+        maxFileSize: 2000000,
         acceptFiles:"image/*",
         dragDropStr: "<span><b>Arrastre aqui</b></span>",
+        sizeErrorStr: "<span><b class='text-danger'>Supera el maxímo tamaño de Archivos</b></span>",
         cancelStr:"Cancelar",
 
         multiDragErrorStr: "No esta permitido subir más de una imagén.",
