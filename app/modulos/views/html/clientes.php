@@ -6,19 +6,19 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
-                    <th>Perfil Usuario</th>
+                    <th>Rol</th>
                 </thead>
                 <tbody>
                     <?php
                         // Carga Resgistros en tabla. Agregar Funcionabilidad para mostrar msj Sin registros en el caso que no se obtengan resultados
                         // EN la consulta en la db
                         foreach ($listaClientes as $cliente) {
-                                echo(' <tr>');
+                                echo(' <tr data-codigo="' . $cliente['ClienteId'] .'">');
     
                                 echo('<td>'.$cliente['Nombres'] . '</td>');
                                 echo('<td>'.$cliente['Apellido'] . '</td>');
                                 echo('<td>'.$cliente['Email'] . '</td>');
-                                echo('<td>'.$cliente['Descripcion'] . '</td>');
+                                echo('<td>'.$cliente['Rol'] . '</td>');
     
                                 echo(' </tr>');
                       

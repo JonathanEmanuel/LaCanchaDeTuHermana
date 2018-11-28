@@ -10,8 +10,8 @@
             <div class="modal-body row">
                     <div class="col-lg-10 col-md-9 col-sm-8">
                         <div class="col-lg-12 col-md-12">
-                            <label>Nombre</label>
-                            <input class="form-control nombre" type="text"/>  
+                            <label>Nombres</label>
+                            <input class="form-control nombres" type="text"/>  
                         </div>
                         <div class="col-lg-12 col-md-12">
                             <label>Apellido</label>
@@ -31,13 +31,17 @@
                         </div>
                         <div class="col-lg-12 col-md-12">
                             <label>Password</label>
-                            <input class="form-control password" type="text"/>  
+                            <input class="form-control password-1" type="text"/>  
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <label>Repetir Password</label>
+                            <input class="form-control password-2" type="text"/>  
                         </div>
                     </div>
             </div>
 
             <div class="modal-footer row">
-                <button id="btnClienteGuardar" type="button" class="btn btn-primary">Guardar</button>
+                <button id="btnClienteGuardar" type="submit" class="btn btn-primary">Guardar</button>
                 <button id="btnModalClienteCerrar" type="button" class="btn btn-primary">Cerrar</button>
             </div>
         </form>

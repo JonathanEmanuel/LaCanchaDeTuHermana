@@ -40,6 +40,16 @@
            
         }
 
+        // Guarda un equipo con sus jugadores
+        public function guardar($parametros=array()){
+            // Obtiene JSON como un String y lo convierte a Objeto
+            $jsonString = file_get_contents('php://input');
+            $jsonObjeto = json_decode($jsonString);
+
+            print_r($jsonObjeto);
+            echo($jsonObjeto->Nombre);
+        }
+
         // Listar Equipos de un Torneo
         public function listar($parametros=''){
 
