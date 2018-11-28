@@ -12,11 +12,14 @@ const appEquipos = new Vue({
             console.log($('#frm-equipo'));
             if(validarFormularioGeneral( $('#frm-equipo') ) ){
                 var parametros = {
-                    TorneoId: equipo.TorneoId,
-                    Nombre: equipo.Nombre,
+                    TorneoId: this.equipo.TorneoId,
+                    Nombre: this.equipo.Nombre,
+                    ImagenURL: this.equipo.ImagenURL,
                 };
-                this.$http.post('guardar', parametros).then(response => {
-    
+                this.equipo.Jugadores = this.jugadores;
+                this.$http.post('equipos/guardar', this.equipo).then(response => {
+                    
+                    console.log(response);
                     this.equipos.push({
                         JugadorId: 0,
                         Apellido: '',
@@ -59,7 +62,15 @@ const appEquipos = new Vue({
                 this.jugadores.splice(indexJugador,1);
 
             } else {
-                 
+                this.$http.post('url', parametros).then(response => {
+                    console.log(response);
+                }, response => {
+                    console.error("Error");
+                    this.mensajeEstado = 'No se encontraron resultados para la busqueda de ' + this.palabraBuscar ;
+                    this.articulos = [];
+                    this.ocultarLoading();
+    
+                });
             }
         },
         // 
