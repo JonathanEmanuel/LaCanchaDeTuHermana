@@ -1,5 +1,6 @@
 <?php
 //require_once('html/index.php');
+require_once(MODELOS . 'cuentaModel.php');
 
 class indexController {
 
@@ -26,9 +27,12 @@ class indexController {
 		//require_once("html/header.php");
 		//require_once("html/menu.php");
 
-		// Segun el perfilId mostrar panel o pagina para el visitante
-		switch ($_SESSION['perfilId']) {
-			case '1':	// Administrador
+		// Segun el Rol mostrar panel o pagina para el visitante
+			$usuario = new Cuenta;
+			$roles = $usuario->obtenerRoles($_SESSION['usuariioId']);
+
+		switch ($roles[0]['Descripcion']) {
+			case 'ADMINISTRADOR':	// Administrador
 				$nombrePanel = "Principal";
 				require_once(VISTAS . "html/inc/head.php");
 				require_once(VISTAS . "html/inc/nav.php");
@@ -52,6 +56,7 @@ class indexController {
             
 			default:
 				echo "<h4> NO EXISTE EL PERFIL </h4>";
+
 				break;
 		}
 

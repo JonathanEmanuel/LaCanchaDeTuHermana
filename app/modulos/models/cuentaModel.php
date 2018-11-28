@@ -24,19 +24,17 @@ class Cuenta extends dbAbstractModel {
 	// FUNCIONES PUBLICAS
 	function __construct() {
 
-
 	}
 
 	//Telefono	PerfilUsuarioId	Borrado
-
 	public function buscarEmailPassword($email, $password){
 		$this->query = "				
-			SELECT usuarioId, apellido, nombres, nombreUsuario, password, email, telefono, PerfilUsuarioId
+			SELECT usuarioId, apellido, nombres, nombreUsuario, password, email, telefono
 			FROM usuarios
 			WHERE email = '$email' AND password = '$password' AND Borrado IS NULL
 		";
 		$this->consultaResultados();
-
+		//print_r($this->rows);
 		if (count($this->rows) == 1) { // si existes el email y password -> Carga los datos del usuario
 			//print_r($this->rows);
 			foreach ($this->rows[0] as $propiedad => $valor) {
@@ -102,6 +100,19 @@ class Cuenta extends dbAbstractModel {
 		}
 	}
 
+	// Obtiene Rol del Usuario
+	public function obtenerRoles($usuarioId){
+		$this->query = "
+			SELECT U.usuarioId, R.RolId, R.Descripcion
+			FROM usuarios U
+			JOIN usuarios_roles UR ON UR.UsuarioId = U.UsuarioId
+			JOIN roles R ON R.RolId = UR.RolId
+			WHERE U.usuarioId = '$usuarioId'
+		";
+		$this->consultaResultados();
+
+		return $this->rows;
+	}
 
 	public function edit() {
 		//
@@ -124,6 +135,8 @@ class Cuenta extends dbAbstractModel {
 	public function getter($atributo) {
 		return $this->$atributo;
 	}
+
+
 }
 
 
