@@ -26,10 +26,15 @@
 
             // Carga Pagina del panel
             require_once(VISTAS . "html/equipos.php");
-
-            require_once(VISTAS . "html/inc/modalEquipo.php");
+            // No se carga el modal como archivo externo, porque se lo incluyo dentro del container 
+            // Donde esta #appEquipos, que se ejecutra la instancia de Vue.js
+            //require_once(VISTAS . "html/inc/modalEquipo.php");
 
             require_once(VISTAS . "html/inc/footer.php");
+            // JS con libreria Vue
+            echo('<script src="../publico/lib/vue.js"></script>');
+            echo('<script src="../publico/lib/vue-resource.min.js"></script>');
+
             // JS con funciones para el Panel
             echo('<script src="../publico/js/equipos.js"></script>');
            

@@ -31,7 +31,64 @@
    color: #111111;
  }
 
+
+/*
+Full screen Modal 
+*/
+.fullscreen-modal .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  
+}
+@media (min-width: 768px) {
+  .fullscreen-modal .modal-dialog {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .fullscreen-modal .modal-dialog {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .fullscreen-modal .modal-dialog {
+     width: 1170px;
+  }
+}
+
+ 
  /* FORMULARIO */
  .noValido{
   border: 2px solid #e74c3c;
+}
+
+/*
+    Tabla Editable
+*/
+.tablaEditable table tbody tr td{
+  padding-left:0px;
+  padding-right:0px;
+  padding-top:0px;
+  padding-bottom:0px;
+  background-color:white;
+}
+
+.tablaEditable table tbody tr{
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+  margin-bottom:0 !important;
+  margin-top:0 !important;
+  background-color:white;
+}
+
+.tablaEditable table tbody tr td input.form-control{
+  padding:1px !important;
+  padding-left:2px !important;
+  padding-right: 2px !important;
+  margin:6px !important;
+  border:hidden;
+  max-height: 25px;
+  
 }
