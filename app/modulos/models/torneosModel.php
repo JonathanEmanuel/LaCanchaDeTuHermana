@@ -117,7 +117,18 @@
             $this->consultaSimple();
 
         }
-        
+
+        // Consulta cantidad de Torneos 
+        public function cantidad(){
+            $this->query = "
+            SELECT MAX(TorneoId) AS TorneoId
+            FROM torneos
+            ";
+            $this->consultaResultados();
+
+            return $this->rows;
+        }
+
     }
 
 
