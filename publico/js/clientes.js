@@ -52,14 +52,15 @@ $(document).ready(function(){
             } else {
                 frmCliente.find('.password-1, .password-2').addClass('noValido');
                 eliminarNoValidoFocus(frmCliente.find('.password-1, .password-2'));
-                alert('Los password no coinciden');
-
+               // alert('Los password no coinciden');
+                msgBox('Los password no coinciden', 'info');
             }
 
 
 
         } else {
-            alert('Completar todos los campos por favor');
+            msgBox('Debe completar todos los campos', 'info');
+            
         }
     });
 
@@ -70,3 +71,67 @@ $(document).ready(function(){
     });
 
 });
+
+// Baja logica a Cliente
+function clienteBaja(btn){
+    var clienteId = $(btn).parent().parent().attr('data-codigo');
+    var row = $(btn).parent().parent();
+    
+    // Si Codigo Torneo es cero, no esta guardado en DB, por lo tanto elimina solo del DOM
+    if ( clienteId != 0){
+        $.ajax({
+            url: 'clientes/baja/' + clienteId,
+            method: 'POST',
+            dataType: 'json',
+            // contentType: "application/json",
+            data: {},
+            success: function(datos) {
+                console.info('respuesta', datos);
+                // Eliminar Row o recargar pagina
+                $(row).remove();
+            },
+            error: function(obj, error, objErorr){
+                console.error('Error: ', error);
+            }
+          });
+    } else {
+        $(row).remove();
+
+    }
+}
+
+// Edicion Cliente
+function clienteAbrir(btn){
+    var clienteId = $(btn).parent().parent().attr('data-codigo');
+    var formularioCliente = $('#frmCliente');
+
+    console.log(clienteId, btn);
+
+    $('#modalCliente').modal('show');
+    vaciarFormulario(formularioCliente);  // En utilidades.js
+
+    
+ /*    $.ajax({
+        url: 'torneos/cargar/' + clienteId,
+        method: 'POST',
+        dataType: 'json',
+        // contentType: "application/json",
+        data: {},
+        success: function(datos) {
+            console.info('respuesta', datos);
+            // Carga Datos del Torneo en el modalTorneo
+            formularioTorneo.attr('data-codigo', datos.clienteId);
+            formularioTorneo.find('.nombre').val(datos.Nombre);
+            formularioTorneo.find('.inicio').val(datos.Inicio);
+            formularioTorneo.find('.fin').val(datos.Fin),
+            formularioTorneo.find('.logo').attr('data-url', '');
+
+
+        },
+        error: function(obj, error, objErorr){
+            console.error('Error: ', error);
+        }
+      });
+ */
+
+}

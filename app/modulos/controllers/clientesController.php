@@ -89,8 +89,11 @@
 
         }
 
-        public function eliminar($parametro){
-
+        // Baja logica a Cliente
+        public function baja($parametro){
+            $cliente =  new Clientes;
+            $cliente->baja($parametro[0]);
+            echo ( $parametro[0]);
         }
     }
     

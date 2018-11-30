@@ -22,6 +22,7 @@
             FROM usuarios U
             JOIN usuarios_roles UR ON UR.UsuarioId = U.UsuarioId
             JOIN roles R ON R.RolId = UR.RolId
+            WHERE U.Borrado IS NULL
            ';
            $this->consultaResultados();
            return $this->rows;
@@ -102,6 +103,15 @@
                 //echo "FALSE";
             }
 
+        }
+
+        public function baja($id){
+            //echo("Codigo baja " .$id . " ----");
+            $this->query = "
+                UPDATE usuarios
+                SET Borrado = NOW()
+                WHERE usuarioId = $id";
+            $this->consultaSimple();
         }
     }
 

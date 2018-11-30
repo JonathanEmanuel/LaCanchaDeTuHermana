@@ -7,6 +7,8 @@
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Rol</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </thead>
                 <tbody>
                     <?php
@@ -19,7 +21,8 @@
                                 echo('<td>'.$cliente['Apellido'] . '</td>');
                                 echo('<td>'.$cliente['Email'] . '</td>');
                                 echo('<td>'.$cliente['Rol'] . '</td>');
-    
+                                echo('<td><button class="btn btn-info btn-sm" onclick=clienteAbrir(this)"><i class="fa fa-pencil fa-fw"></i></button> </td>');
+                                echo('<td><button class="btn btn-danger btn-sm" onclick="clienteBaja(this)"><i class="fa fa-times fa-fw"></i></button> </td>');
                                 echo(' </tr>');
                       
                         }

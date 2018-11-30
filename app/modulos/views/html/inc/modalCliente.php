@@ -31,18 +31,18 @@
                         </div>
                         <div class="col-lg-12 col-md-12">
                             <label>Password</label>
-                            <input class="form-control password-1" type="text"/>  
+                            <input class="form-control password-1" type="password"/>  
                         </div>
                         <div class="col-lg-12 col-md-12">
                             <label>Repetir Password</label>
-                            <input class="form-control password-2" type="text"/>  
+                            <input class="form-control password-2" type="password"/>  
                         </div>
                     </div>
             </div>
 
             <div class="modal-footer row">
                 <button id="btnClienteGuardar" type="submit" class="btn btn-primary">Guardar</button>
-                <button id="btnModalClienteCerrar" type="button" class="btn btn-primary">Cerrar</button>
+                <button id="btnModalClienteCerrar" type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
             </div>
         </form>
 
